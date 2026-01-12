@@ -14,6 +14,9 @@ async function saveWeatherData(data) {
     if(error){
         throw new Error('Supabase error', error.message);
     }
+
+    console.log('Data save successfully');
+    
     return weatherData;
 }
 

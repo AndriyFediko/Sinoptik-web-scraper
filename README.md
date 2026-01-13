@@ -1,21 +1,24 @@
-# Sinoptik Weather Scraper
+# 🌦️ Sinoptik Weather Scraper & Dashboard
 
-A Node.js tool that scrapes 10-day weather forecasts from Sinoptik.ua and stores them in a Supabase PostgreSQL database.
+A Node.js-based ETL (Extract, Transform, Load) system that autonomously scrapes, stores, and visualizes weather data using cloud-based automation.
 
-## Tech Stack
-- **Node.js** & **Playwright** (with stealth plugin) for scraping.
-- **Supabase** (PostgreSQL) for data storage.
-- **Dotenv** for secure environment variable management.
+## 🚀 Key Features
+* **Automated Daily Scraping**: Configured with GitHub Actions to execute the scraper daily via a Cron schedule (08:00 Kyiv time), ensuring the database stays current without manual intervention.
+* **Anti-Bot Detection**: Utilizes Playwright with the Stealth plugin to mimic human behavior and bypass bot protection systems.
+* **Cloud Data Storage**: Fully integrated with Supabase (PostgreSQL) for structured storage and historical data persistence.
+* **Responsive Web Dashboard**: A modern frontend built with Express.js, featuring a robust table layout designed to handle long weather descriptions across all devices.
+* **Secure Credential Management**: Sensitive data like API keys and database URLs are managed securely via GitHub Secrets and Dotenv.
 
-## How it works
-1. Launches a headless browser to visit Sinoptik.ua.
-2. Navigates through 10-day tabs to collect min/max temperatures and descriptions.
-3. Cleans data (removes symbols) and performs an `upsert` to the database.
+## 🛠 Tech Stack
+* **Node.js & Playwright** (with stealth plugin) for scraping.
+* **Supabase** (PostgreSQL) for cloud data storage.
+* **GitHub Actions** for CI/CD and task scheduling.
+* **Express.js** for the dashboard backend.
+* **Modern CSS** (Grid & Flexbox) for a responsive, stable UI.
 
-## 🚀 Planned Features & Future Improvements
-
-To make this project even more robust and scalable, I plan to implement the following features:
-
-* **Multi-city Support:** Refactor the core logic to accept an array of cities and scrape weather data for multiple locations in a single run.
-* **Automated Scheduling (CI/CD):** Integrate **GitHub Actions** to automate the scraping process, allowing the database to update daily at a specific time without manual intervention.
-* **Telegram Bot Integration:** Add a notification layer using the Telegram Bot API to send daily weather summaries or alerts directly to a mobile device.
+## 📋 How It Works
+* **Automation**: GitHub Actions triggers the script every morning based on a Cron expression.
+* **Scraping**: Launches a headless browser to visit Sinoptik.ua and iterates through 10-day forecast tabs.
+* **Data Processing**: Cleans raw strings (removes "°" symbols), formats dates, and structures data into JSON.
+* **Database Upsert**: Performs an upsert operation to Supabase, updating existing records or adding new ones to prevent duplicates.
+* **Visualization**: The dashboard fetches the latest data and renders it in a specialized table.

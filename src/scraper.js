@@ -24,7 +24,7 @@ async function sinopticScraper(city) {
 
         for(let i = 0; i<dayTabs.length; i++){
             const ramdomDelay = Math.floor(Math.random() * (1000 - 500 + 1)) + 500;
-            dayTabs[i].click();
+            await dayTabs[i].click();
             await page.waitForTimeout(ramdomDelay);
 
             const data = await page.evaluate((cityName) =>{

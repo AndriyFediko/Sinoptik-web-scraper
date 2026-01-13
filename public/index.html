@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather Scraper Dashboard</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://unpkg.com/lucide@latest"></script>
+    </head>
+    <body>
+        <div class="dashboard">
+            <header class="header">
+                <div class="header__info">
+                    <h1>Weather Insights</h1>
+                    <p>Data collected from Sinoptik.ua using Playwright</p>
+                </div>
+                <button class="btn btn--primary" id="refreshBtn"><i data-lucide="refresh-cw"></i> Update Data</button>
+            </header>
+            <main class="content">
+                <section class="stats">
+                    <div class="card">
+                        <div class="card__icon card__icon--temp"><i data-lucide="thermometer"></i></div>
+                        <div class="card__data">
+                            <span class="card__label">Today's Range</span>
+                            <div class="card__temp-container">
+                                <span class="card__value card__value--min" id="minTemp">-2°C</span>
+
+                                <span class="card__divider">/</span>
+
+                                <span class="card__value card__value--max" id="maxTemp">+5°C</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__icon card__icon--city"><i data-lucide="map-pin"></i></div>
+                        <div class="card__data">
+                            <span class="card__label">City</span>
+
+                            <h2 class="card__value" id="cityName">Sambir</h2>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__icon card__icon--db"><i data-lucide="database"></i></div>
+
+                        <div class="card__data">
+                            <span class="card__label">Total Records</span>
+
+                            <h2 class="card__value" id="totalRecords">124</h2>
+                        </div>
+                    </div>
+                </section>
+                <section class="history">
+                    <div class="history__header">
+                        <h3>Observation History</h3>
+                    </div>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>City</th>
+                                    <th>Min Temp</th>
+                                    <th>Max Temp</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody id="weatherData">
+                                <tr>
+                                    <td>12.01.2026</td>
+                                    <td>Sambir</td>
+                                    <td class="text-blue">-2°C</td>
+                                    <td class="text-red">+5°C</td>
+                                    <td>Partly Cloudy</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+        <script src="script.js"></script>
+        <script>
+            // Initialize Lucide icons
+
+            lucide.createIcons();
+        </script>
+    </body>
+</html>
